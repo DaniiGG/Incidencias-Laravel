@@ -2,7 +2,7 @@
 
 <!-- Asegúrate de tener un layout base, puede variar según tu aplicación -->
 
-
+@include('layouts.header')
     <div class="container">
         <h2>Crear Nueva Patrulla</h2>
 
@@ -32,3 +32,4 @@
             <button type="submit" class="btn btn-primary">Crear Patrulla</button>
         </form>
     </div>
+    @include('layouts.footer')
