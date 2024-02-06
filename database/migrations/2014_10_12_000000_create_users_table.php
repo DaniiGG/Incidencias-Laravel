@@ -18,8 +18,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('roles', ['Agente', 'Oficial']);
+            $table->unsignedBigInteger('patrulla_id')->nullable(); // Nueva columna
             $table->rememberToken();
             $table->timestamps();
+
+            
         });
     }
 

@@ -1,16 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Repositories\PatrullaRepository;
 use Illuminate\Http\Request;
 use App\Models\Patrulla;
 
 class PatrullaController extends Controller
 {
+
+    protected $patrullas;
+
+    public function __construct(PatrullaRepository $patrullas){
+        $this->patrullas= $patrullas;
+    }
     public function index()
     {
-        $patrullas = Patrulla::all();
-        return view('patrulla.index', compact('patrullas'));
+        $patrullas = $this->patrullas->getAll();
+        
+        return view('patrulla.show', ['patrullas' => $patrullas]);
+
+
     }
 
     public function create()
@@ -27,13 +36,17 @@ class PatrullaController extends Controller
 
         Patrulla::create($request->all());
 
-        return redirect()->route('patrulla/index')->with('success', 'Patrulla creada correctamente.');
+        return redirect()->route('patrulla.show')->with('success', 'Patrulla creada correctamente.');
     }
 
-    public function show($matricula)
+    public function showOne($matricula)
     {
         $patrulla = Patrulla::find($matricula);
-        return view('patrulla.show', compact('patrulla'));
+        return view('patrulla.showOne', compact('patrulla'));
+    }
+
+    public function showAll()
+    {
     }
 
     public function edit($matricula)
