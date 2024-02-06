@@ -45,6 +45,26 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="patrulla_id" :value="__('Patrulla')" />
+            <select id="patrulla_id" name="patrulla_id" class="block mt-1 w-full" required>
+                @foreach ($patrullas as $patrulla)
+                    <option value="{{ $patrulla->id }}">{{ $patrulla->matricula }}</option>
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('patrulla_id')" class="mt-2" />
+        </div>
+
+         <!-- Roles -->
+        <div class="mt-4">
+            <x-input-label for="roles" :value="__('Roles')" />
+            <select id="roles" name="roles" class="block mt-1 w-full" required>
+                <option value="agente">Agente</option>
+                <option value="oficial">Oficial</option>
+            </select>
+            <x-input-error :messages="$errors->get('roles')" class="mt-2" />
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

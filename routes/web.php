@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/patrulla/create', [PatrullaController::class, 'create'])->name('patrulla.create');
+Route::get('/patrulla/showAll', [PatrullaController::class, 'index'])->name('patrulla.show');
 Route::post('/patrulla', [PatrullaController::class, 'store'])->name('patrulla.store');
 
 Route::get('/dashboard', function () {
