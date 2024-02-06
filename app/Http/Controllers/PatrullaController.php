@@ -28,16 +28,16 @@ class PatrullaController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'matricula' => 'required|unique:patrulla,matricula',
-            'vehiculo' => 'required',
-        ]);
+{
+    $request->validate([
+        'matricula' => 'required|string|unique:patrulla,matricula',
+        'vehiculo' => 'required',
+    ]);
 
-        Patrulla::create($request->all());
+    Patrulla::create($request->all());
 
-        return redirect()->route('patrulla.show')->with('success', 'Patrulla creada correctamente.');
-    }
+    return redirect()->route('patrulla.show')->with('success', 'Patrulla creada correctamente.');
+}
 
     public function showOne($matricula)
     {
@@ -55,17 +55,25 @@ class PatrullaController extends Controller
         return view('patrulla.edit', compact('patrulla'));
     }
 
-    public function update(Request $request, $matricula)
+    public function update(Request $request, $id)
     {
+        
         $request->validate([
-            'matricula' => 'required',
+            'matricula' => 'required|string',
             'vehiculo' => 'required',
         ]);
+        
+        $patrulla = Patrulla::find($id);
+        
 
-        $patrulla = Patrulla::find($matricula);
+            
         $patrulla->update($request->all());
+            // Resto del código aquí...
+        
+    
+        
 
-        return redirect()->route('patrulla.index')->with('success', 'Patrulla actualizada correctamente.');
+        return redirect()->route('patrulla.show')->with('success', 'Patrulla actualizada correctamente.');
     }
 
     public function destroy($matricula)

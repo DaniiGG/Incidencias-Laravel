@@ -10,9 +10,10 @@ class Patrulla extends Model
     use HasFactory;
     protected $table = 'patrulla';
     protected $fillable = [
+        
         'matricula',
         'vehiculo',
     ];
 
-    protected $primaryKey = 'matricula';
+    
 }

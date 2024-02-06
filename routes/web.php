@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatrullaController;
 
+use App\Http\Controllers\IncidenteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +21,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Rutas para mostrar todos los incidentes, crear un nuevo incidente, almacenar un nuevo incidente
+Route::get('/incidentes', [IncidenteController::class, 'index'])->name('incidentes.index');
+Route::get('/incidentes/create', [IncidenteController::class, 'create'])->name('incidentes.create');
+Route::post('/incidentes', [IncidenteController::class, 'store'])->name('incidentes.store');
+
+// Rutas para mostrar un incidente específico, editar un incidente, actualizar un incidente existente
+Route::get('/incidentes/{incidente}', [IncidenteController::class, 'show'])->name('incidentes.show');
+Route::get('/incidentes/{incidente}/edit', [IncidenteController::class, 'edit'])->name('incidentes.edit');
+Route::put('/incidentes/{incidente}', [IncidenteController::class, 'update'])->name('incidentes.update');
+
+// Ruta para eliminar un incidente
+Route::delete('/incidentes/{incidente}', [IncidenteController::class, 'destroy'])->name('incidentes.destroy');
+
 Route::get('/patrulla/create', [PatrullaController::class, 'create'])->name('patrulla.create');
+Route::get('/patrulla/edit/{id}', [PatrullaController::class, 'edit'])->name('patrulla.edit');
+Route::put('/patrulla/{matricula}', [PatrullaController::class, 'update'])->name('patrulla.update');
 Route::get('/patrulla/showAll', [PatrullaController::class, 'index'])->name('patrulla.show');
 Route::post('/patrulla', [PatrullaController::class, 'store'])->name('patrulla.store');
 
