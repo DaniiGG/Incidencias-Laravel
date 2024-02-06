@@ -1,3 +1,4 @@
+@include('layouts.header')
 <div class="container">
     <h1>Detalles de la Patrulla</h1>
     @foreach ($patrullas as $patrulla)
@@ -15,3 +16,4 @@
     
     <a href="{{ url('/dashboard') }}">Dashboard</a>
 </div>
+@include('layouts.footer')

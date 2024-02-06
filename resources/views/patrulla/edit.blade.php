@@ -1,3 +1,4 @@
+@include('layouts.header')
 <div class="container">
     <h1>Editar Patrulla</h1>
     
@@ -23,3 +24,4 @@
     {{-- Añade botón de cancelar o regresar a la página anterior --}}
     <a href="{{ url('/dashboard') }}" class="btn btn-secondary">Cancelar</a>
 </div>
+@include('layouts.footer')

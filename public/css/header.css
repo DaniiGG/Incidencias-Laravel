@@ -1,0 +1,27 @@
+*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+
+    body{
+    margin:0;
+    }
+    a:visited{
+    color:white;
+   }
+   a:link{
+    color:white;
+   }
+   a{
+    text-decoration:none;
+   }
+   .navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color:rgb(18, 18, 18);
+    color: white;
+    }
+    .navbar h1{
+     margin-left: 20px;
+    }
+    .navbar div{
+        margin-right: 20px;
+    }
