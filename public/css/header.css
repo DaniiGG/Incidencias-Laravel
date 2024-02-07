@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&family=Lexend+Deca:wght@200&display=swap');
 *,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
 
     body{
     margin:0;
+    font-family: 'Encode Sans', sans-serif;
     }
     a:visited{
     color:white;
@@ -11,6 +13,7 @@
    }
    a{
     text-decoration:none;
+    margin-right: 10px;
    }
    .navbar{
     display:flex;
@@ -25,3 +28,5 @@
     .navbar div{
         margin-right: 20px;
     }
+
+    

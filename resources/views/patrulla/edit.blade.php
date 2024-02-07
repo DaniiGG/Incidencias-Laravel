@@ -1,3 +1,7 @@
+<html>
+<head>
+<link rel="stylesheet" href="{!! asset('css/patrullas/editar.css') !!}">
+</head>
 @include('layouts.header')
 <div class="container">
     <h1>Editar Patrulla</h1>
@@ -25,3 +29,4 @@
     <a href="{{ url('/dashboard') }}" class="btn btn-secondary">Cancelar</a>
 </div>
 @include('layouts.footer')
+</html>

@@ -1,6 +1,7 @@
-<!-- resources/views/patrulla/create.blade.php -->
-
-<!-- Asegúrate de tener un layout base, puede variar según tu aplicación -->
+<html>
+    <head>
+    <link rel="stylesheet" href="{!! asset('css/patrullas/crear.css') !!}"> 
+</head>
 
 @include('layouts.header')
     <div class="container">
@@ -33,3 +34,5 @@
         </form>
     </div>
     @include('layouts.footer')
+
+    </html>

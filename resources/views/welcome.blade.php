@@ -22,7 +22,12 @@
            <p>Por favor, anote las incidencias que ocurren a lo largo de la jornada</p>
 
            <button>
-            <a href="#"><span>Anotar</span></a>
+            @auth
+            <a  href="{{ url('/incidentes/create') }}" ><span>Anotar</span></a>
+            @else
+            <a  href="{{ url('/login') }}" ><span>Anotar</span></a>
+            @endauth
+           
             </button>
 
         </div>

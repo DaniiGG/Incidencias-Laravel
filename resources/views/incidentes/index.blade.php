@@ -1,3 +1,4 @@
+@include('layouts.header')
 <div class="container">
     <h1>Listado de Incidentes</h1>
     <a href="{{ route('incidentes.create') }}" class="btn btn-success">Crear Incidente</a>
@@ -33,3 +34,4 @@
         </tbody>
     </table>
 </div>
+@include('layouts.footer')

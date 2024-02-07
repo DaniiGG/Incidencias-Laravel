@@ -1,19 +1,40 @@
+<html>
+<head>
+    <link rel="stylesheet" href="{!! asset('css/patrullas/ver.css') !!}"> 
+</head>
 @include('layouts.header')
+@auth
 <div class="container">
     <h1>Detalles de la Patrulla</h1>
-    @foreach ($patrullas as $patrulla)
+    <table>
+        <tr>
+            <th>Identificador</th>
+            <th>Matrícula</th>
+            <th>Vehículo</th>
+            @if(Auth::user()->roles == 'Oficial')
+            <th>Opciones</th>
+            @endif
+        </tr>
+        @foreach ($patrullas as $patrulla)
+        <tr>
+            <td>{{ $patrulla->id }}</td>
+            <td>{{ $patrulla->matricula }}</td>
+            <td>{{ $patrulla->vehiculo }}</td>
+            
+            @if(Auth::user()->roles == 'Oficial')
+            <td><a href="{{ url('/patrulla/edit/'.$patrulla->id) }}" class="btn btn-primary">Editar</a>
+            <a href="{{ url('/patrulla/borrar/'.$patrulla->id) }}" class="btn btn-primary">Eliminar</a></td>
+            @endif
+            
+        </tr>
+        @endforeach
+    </table>
     
-        <div>
-            <strong>Matrícula:</strong> {{ $patrulla->matricula }}
-        </div>
-        <div>
-            <strong>Vehículo:</strong> {{ $patrulla->vehiculo }}
-        </div>
         
-        {{-- Botón para ir a la página de edición --}}
-        <a href="{{ url('/patrulla/edit/'.$patrulla->id) }}" class="btn btn-primary">Editar</a>
-    @endforeach
-    
-    <a href="{{ url('/dashboard') }}">Dashboard</a>
+    @if(Auth::user()->roles == 'Oficial')
+   <a class="btn btn-primary" id="crear" href="{{ url('/patrulla/create') }}">Crear Patrulla</a>
+   @endif
+   @endauth
 </div>
 @include('layouts.footer')
+</html>

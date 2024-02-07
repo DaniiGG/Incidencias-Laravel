@@ -1,3 +1,4 @@
+@include('layouts.header')
 <div class="container">
     <h1>Crear Incidente</h1>
     <!-- Formulario de creación -->
@@ -32,3 +33,4 @@
         <a href="{{ route('incidentes.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
+@include('layouts.footer')
