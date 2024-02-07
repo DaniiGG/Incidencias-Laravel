@@ -10,6 +10,10 @@
                 @auth
                     <a href="{{ url('/dashboard') }}" >Dashboard</a>
                     <a href="{{ url('/patrulla/create') }}" >Patrullas</a>
+                    <a href="{{ url('/incidentes') }}" >Incidentes</a>
+                    @if(Auth::user()->roles == 'Oficial')
+                        <a href="{{ url('/policias') }}" >Ver policías</a>
+                    @endif
                 @else
                     <a href="{{ route('login') }}" >Log in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     <a href="{{ url('/patrulla/create') }}" >Insertar Patrullas</a>

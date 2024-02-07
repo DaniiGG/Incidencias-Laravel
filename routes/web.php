@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatrullaController;
 
 use App\Http\Controllers\IncidenteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,27 @@ Route::get('/', function () {
 });
 
 
+// Rutas para mostrar la lista de usuarios, crear un usuario nuevo y almacenar un usuario en la base de datos
+// Mostrar la lista de usuarios
+Route::get('/policias', [UserController::class, 'index'])->name('usuarios.index');
+
+// Mostrar el formulario para crear un nuevo usuario
+Route::get('/users/create', [UserController::class, 'create'])->name('usuarios.create');
+
+// Almacenar un nuevo usuario en la base de datos
+Route::post('/users', [UserController::class, 'store'])->name('usuarios.store');
+
+// Mostrar los detalles de un usuario específico
+Route::get('/users/{user}', [UserController::class, 'show'])->name('usuarios.show');
+
+// Mostrar el formulario para editar un usuario existente
+Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('usuarios.edit');
+
+// Actualizar los detalles de un usuario en la base de datos
+Route::put('/users/{user}', [UserController::class, 'update'])->name('usuarios.update');
+
+// Eliminar un usuario de la base de datos
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 // Rutas para mostrar todos los incidentes, crear un nuevo incidente, almacenar un nuevo incidente
 Route::get('/incidentes', [IncidenteController::class, 'index'])->name('incidentes.index');
 Route::get('/incidentes/create', [IncidenteController::class, 'create'])->name('incidentes.create');
