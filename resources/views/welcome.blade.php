@@ -21,7 +21,7 @@
            <h1>Anotación de incidentes</h1>
            <p>Por favor, anote las incidencias que ocurren a lo largo de la jornada</p>
 
-           <button>
+           <button class="anotar">
             @auth
             <a  href="{{ url('/incidentes/create') }}" ><span>Anotar</span></a>
             @else

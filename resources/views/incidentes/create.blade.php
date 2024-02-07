@@ -1,3 +1,7 @@
+<html>
+<head>
+    <link rel="stylesheet" href="{!! asset('css/incidentes/crear.css') !!}">
+</head>
 @include('layouts.header')
 <div class="container">
     <h1>Crear Incidente</h1>
@@ -34,3 +38,4 @@
     </form>
 </div>
 @include('layouts.footer')
+</html>
