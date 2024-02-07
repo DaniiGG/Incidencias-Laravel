@@ -1,3 +1,4 @@
+@include('layouts.header')
 <div class="container">
     <h1>Lista de Usuarios</h1>
     <a href="{{ route('usuarios.create') }}" class="btn btn-primary mb-3">Crear Usuario</a>
@@ -30,3 +31,4 @@
         </tbody>
     </table>
 </div>
+@include('layouts.footer')

@@ -1,3 +1,4 @@
+@include('layouts.footer')
 <div class="container">
     <h1>Editar Usuario</h1>
     <form action="{{ route('usuarios.update', $usuario->id) }}" method="POST">
@@ -15,3 +16,4 @@
         <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
+@include('layouts.footer')

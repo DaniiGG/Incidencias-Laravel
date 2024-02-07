@@ -1,3 +1,4 @@
+@include('layouts.header')
 <div class="container">
     <h1>Crear Usuario</h1>
     <form action="{{ route('usuarios.store') }}" method="POST">
@@ -18,3 +19,4 @@
         <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
+@include('layouts.footer')

@@ -30,7 +30,12 @@ class PatrullaController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'matricula' => 'required|string|unique:patrulla,matricula',
+        'matricula' => [
+            'required',
+            'string',
+            'unique:patrulla,matricula',
+            'regex:/^\d{4}[a-zA-Z]{3}$/',
+        ],
         'vehiculo' => 'required',
     ]);
 
