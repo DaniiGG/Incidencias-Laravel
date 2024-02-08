@@ -132,7 +132,6 @@
     
     /* Estilos para el botón "Ver" */
     .btn-primary {
-        width: min-content;
         background-color: #000143; /* Verde */
         color: #fff; /* Texto blanco */
     }
@@ -153,12 +152,12 @@
     
     /* Estilos para el botón "Eliminar" */
     .btn-danger {
-        background-color: #dc3545; /* Rojo */
+        background-color: #a52121; /* Rojo */
         color: #fff; /* Texto blanco */
     }
     
     .btn-danger:hover {
-        background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
+        background-color: #c31a1a; /* Rojo más oscuro al pasar el ratón */
     }
     
     /* Formulario para eliminar usuario */
