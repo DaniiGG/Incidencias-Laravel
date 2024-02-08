@@ -33,14 +33,15 @@ class UserController extends Controller
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }
 
-    public function show(User $usuario)
+    public function show($id)
     {
+        $usuario = User::find($id);
         return view('usuarios.show', compact('usuario'));
     }
 
     public function edit($id)
 {
-    $usuario = User::find($id);
+    
     return view('usuarios.edit', compact('usuario'));
 }
 
@@ -63,10 +64,15 @@ public function update(Request $request, $id)
     return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
 }
 
-    public function destroy(User $usuario)
+    public function destroy($id)
     {
-        $usuario->delete();
+        $usuario = User::findOrFail($id);
 
+        $usuario->incidentes()->delete();
+
+
+        $usuario->delete();
+        
         return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }

@@ -26,7 +26,7 @@
     </form>
     
     {{-- Añade botón de cancelar o regresar a la página anterior --}}
-    <a href="{{ url('/dashboard') }}" class="btn btn-secondary">Cancelar</a>
+    <a href="{{ url('/') }}" class="btn btn-secondary">Cancelar</a>
 </div>
 @include('layouts.footer')
 </html>

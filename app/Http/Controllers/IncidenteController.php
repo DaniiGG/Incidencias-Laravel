@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Incidente;
+use Carbon\Carbon;
 
 class IncidenteController extends Controller
 {
@@ -28,7 +29,16 @@ class IncidenteController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            'fecha' => 'required|date',
+            'fecha' => [
+                'required',
+                'date',
+                function ($attribute, $value, $fail) {
+                    $fechaActual = Carbon::now();
+                    if (Carbon::parse($value)->greaterThan($fechaActual)) {
+                        $fail('La fecha no puede ser mayor a la fecha actual.');
+                    }
+                },
+            ],
             'a_la_fuga' => 'required|boolean',
             'ubicacion' => 'required|string|max:255',
             

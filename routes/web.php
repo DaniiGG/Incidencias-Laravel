@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::middleware('auth')->group(function () {
 
 // Rutas para mostrar la lista de usuarios, crear un usuario nuevo y almacenar un usuario en la base de datos
 // Mostrar la lista de usuarios
@@ -60,6 +60,7 @@ Route::delete('/incidentes/{incidente}', [IncidenteController::class, 'destroy']
 Route::get('/patrulla/create', [PatrullaController::class, 'create'])->name('patrulla.create');
 Route::get('/patrulla/edit/{id}', [PatrullaController::class, 'edit'])->name('patrulla.edit');
 Route::put('/patrulla/{matricula}', [PatrullaController::class, 'update'])->name('patrulla.update');
+Route::get('/patrulla/borrar/{id}', [PatrullaController::class, 'destroy'])->name('patrulla.destroy');
 Route::get('/patrulla/showAll', [PatrullaController::class, 'index'])->name('patrulla.show');
 Route::post('/patrulla', [PatrullaController::class, 'store'])->name('patrulla.store');
 
@@ -67,7 +68,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

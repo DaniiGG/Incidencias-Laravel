@@ -81,9 +81,9 @@ class PatrullaController extends Controller
         return redirect()->route('patrulla.show')->with('success', 'Patrulla actualizada correctamente.');
     }
 
-    public function destroy($matricula)
+    public function destroy($id)
     {
-        $patrulla = Patrulla::find($matricula);
+        $patrulla = Patrulla::find($id);
         $patrulla->delete();
 
         return redirect()->route('patrulla.index')->with('success', 'Patrulla eliminada correctamente.');
