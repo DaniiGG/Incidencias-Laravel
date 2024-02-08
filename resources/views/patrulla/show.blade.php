@@ -32,7 +32,7 @@
     
         
     @if(Auth::user()->roles == 'Oficial')
-   <a class="btn btn-primary" id="crear" href="{{ url('/patrulla/create') }}">Crear Patrulla</a>
+   <a class="btn" id="crear" href="{{ url('/patrulla/create') }}">Crear Patrulla</a>
    @endif
    @endauth
 </div>

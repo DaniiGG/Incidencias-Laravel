@@ -1,3 +1,4 @@
+<html style="background-color:rgb(243 244 246)">
 @include('layouts.header')
 <x-guest-layout>
     <!-- Session Status -->

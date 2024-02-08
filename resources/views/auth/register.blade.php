@@ -1,4 +1,4 @@
-<html style="margin-bottom: 80px;">
+<html style="margin-bottom: 80px; background-color:rgb(243 244 246)">
 @include('layouts.header')
 <x-guest-layout class="register-all" >
     <form method="POST" action="{{ route('register') }}">
