@@ -1,6 +1,7 @@
 @include('layouts.header')
 <div class="container">
-    <h1 class="heading">Lista de Usuarios</h1>
+    @auth
+    <h1 class="heading">Lista de Agentes</h1>
     <table class="table table-users">
         <thead>
             <tr>
@@ -8,6 +9,7 @@
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Correo Electrónico</th>
+                <th>Rol</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -18,7 +20,8 @@
                 <td>{{ $usuario->name }}</td>
                 <td>{{ $usuario->apellidos }}</td>
                 <td>{{ $usuario->email }}</td>
-                <td>
+                <td>{{ $usuario->roles }}</td>
+                <td style="text-align: center">
                     <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-primary btn-action">Ver</a>
                     <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-action">Editar</a>
                     <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" class="form-inline form-delete">
@@ -31,5 +34,9 @@
             @endforeach
         </tbody>
     </table>
+    @if(Auth::user()->roles == 'Oficial')
+    <a href="{{ route('register') }}" class="btn btn-success">Añadir Agente</a>
+    @endif
 </div>
+@endauth
 @include('layouts.footer')

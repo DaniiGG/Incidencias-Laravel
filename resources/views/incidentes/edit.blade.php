@@ -1,7 +1,12 @@
+<html >
+    <head>
+    <link rel="stylesheet" href="{!! asset('css/incidentes/editar.css') !!}">
+    </head>
 @include('layouts.header')
 <div class="container">
     <h1>Editar Incidente</h1>
     <!-- Formulario de edición -->
+    <div class="info">
     <form action="{{ route('incidentes.update', $incidente->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -36,5 +41,7 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         <a href="{{ route('incidentes.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
+    </div>
 </div>
 @include('layouts.footer')
+</html>
