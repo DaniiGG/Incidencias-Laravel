@@ -25,7 +25,7 @@
                     <td>
                         <a href="{{ route('incidentes.show', $incidente->id) }}" class="btn btn-primary">Ver</a>
                         @if (Auth::user()->roles == 'Oficial')
-                            <a href="{{ route('incidentes.edit', $incidente->id) }}" class="btn btn-info">Editar</a>
+                            <a href="{{ route('incidentes.edit', $incidente->id) }}" class="btn btn-warning">Editar</a>
                         
                         <form action="{{ route('incidentes.destroy', $incidente->id) }}" method="POST" style="display: inline;">
                             @csrf

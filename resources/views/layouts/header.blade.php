@@ -12,7 +12,6 @@
                     <a href="{{ url('/incidentes') }}">Incidentes</a>
                     @if(Auth::user()->roles == 'Oficial')
                                 <a href="{{ url('/policias') }}">Ver policías</a>
-                                <a href="{{ route('register') }}">Registrar agente</a>
                     @endif
                     <div class="dropdown">
                         <span class="username">{{ Auth::user()->name }}</span>

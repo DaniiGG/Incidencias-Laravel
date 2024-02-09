@@ -23,7 +23,7 @@
             
             @if(Auth::user()->roles == 'Oficial')
             <td><a href="{{ url('/patrulla/edit/'.$patrulla->id) }}" class="btn btn-primary">Editar</a>
-            <a href="{{ url('/patrulla/borrar/'.$patrulla->id) }}" class="btn btn-primary">Eliminar</a></td>
+            <a href="{{ url('/patrulla/borrar/'.$patrulla->id) }}" class="btn btn-danger">Eliminar</a></td>
             @endif
             
         </tr>
