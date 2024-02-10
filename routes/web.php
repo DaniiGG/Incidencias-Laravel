@@ -27,9 +27,6 @@ Route::middleware('auth')->group(function () {
 // Mostrar la lista de usuarios
 Route::get('/policias', [UserController::class, 'index'])->name('usuarios.index');
 
-// Mostrar el formulario para crear un nuevo usuario
-Route::get('/users/create', [UserController::class, 'create'])->name('usuarios.create');
-
 // Almacenar un nuevo usuario en la base de datos
 Route::post('/users', [UserController::class, 'store'])->name('usuarios.store');
 

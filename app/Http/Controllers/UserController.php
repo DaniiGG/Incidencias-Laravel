@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Patrulla;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
     public function index()
     {
+        if (Gate::allows('create', User::class)) {
         $usuarios = User::all();
         return view('usuarios.index', compact('usuarios'));
+    } else {
+        abort(403, 'No tienes permiso para acceder a esta página.');
+    }
     }
 
     public function create()
@@ -36,15 +41,24 @@ class UserController extends Controller
 
     public function show($id)
 {
+    if (Gate::allows('create', User::class)) {
     $usuario = User::with('patrulla')->find($id);
     return view('usuarios.show', compact('usuario'));
+} else {
+    abort(403, 'No tienes permiso para acceder a esta página.');
+}
+
 }
 
 public function edit($id)
 {
+    if (Gate::allows('create', User::class)) {
     $usuario = User::find($id);
     $patrullas = Patrulla::all(); // Suponiendo que tienes un modelo Patrulla
     return view('usuarios.edit', compact('usuario', 'patrullas'));
+} else {
+    abort(403, 'No tienes permiso para acceder a esta página.');
+}
 }
 
 public function update(Request $request, $id)

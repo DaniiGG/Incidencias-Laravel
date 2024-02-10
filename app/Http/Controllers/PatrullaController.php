@@ -5,6 +5,8 @@ use App\Repositories\PatrullaRepository;
 use Illuminate\Http\Request;
 use App\Models\Patrulla;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 class PatrullaController extends Controller
 {
 
@@ -24,7 +26,11 @@ class PatrullaController extends Controller
 
     public function create()
     {
+        if (Gate::allows('create', User::class)) {
         return view('patrulla/patrulla-create');
+    } else {
+        abort(403, 'No tienes permiso para acceder a esta página.');
+    }
     }
 
     public function store(Request $request)
