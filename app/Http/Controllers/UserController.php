@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Patrulla;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -34,15 +35,16 @@ class UserController extends Controller
     }
 
     public function show($id)
-    {
-        $usuario = User::find($id);
-        return view('usuarios.show', compact('usuario'));
-    }
-
-    public function edit($id)
 {
-    
-    return view('usuarios.edit', compact('usuario'));
+    $usuario = User::with('patrulla')->find($id);
+    return view('usuarios.show', compact('usuario'));
+}
+
+public function edit($id)
+{
+    $usuario = User::find($id);
+    $patrullas = Patrulla::all(); // Suponiendo que tienes un modelo Patrulla
+    return view('usuarios.edit', compact('usuario', 'patrullas'));
 }
 
 public function update(Request $request, $id)

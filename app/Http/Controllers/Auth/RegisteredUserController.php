@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Repositories\PatrullaRepository;
+use Illuminate\Support\Facades\Gate;
 
 class RegisteredUserController extends Controller
 {
@@ -22,14 +23,19 @@ class RegisteredUserController extends Controller
 
     public function __construct(PatrullaRepository $patrullas){
         $this->patrullas= $patrullas;
+        
     }
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create()
     {
-        $patrullas = $this->patrullas->getAll();
-        return view('auth.register', ['patrullas' => $patrullas]);
+        if (Gate::allows('create', User::class)) {
+            $patrullas = $this->patrullas->getAll();
+            return view('auth.register', ['patrullas' => $patrullas]);
+        } else {
+            abort(403, 'No tienes permiso para acceder a esta página.');
+        }
     }
 
     /**

@@ -50,4 +50,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Incidente::class);
     }
+    public function patrulla()
+    {
+        return $this->belongsTo(Patrulla::class, 'patrulla_id');
+    }
 }

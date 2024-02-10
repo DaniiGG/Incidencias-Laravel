@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Repositories\PatrullaRepository;
 use Illuminate\Http\Request;
 use App\Models\Patrulla;
-
+use Illuminate\Support\Facades\DB;
 class PatrullaController extends Controller
 {
 
@@ -64,7 +64,12 @@ class PatrullaController extends Controller
     {
         
         $request->validate([
-            'matricula' => 'required|string',
+            'matricula' => [
+                'required',
+                'string',
+                'unique:patrulla,matricula',
+                'regex:/^\d{4}[a-zA-Z]{3}$/',
+            ],
             'vehiculo' => 'required',
         ]);
         
@@ -84,8 +89,9 @@ class PatrullaController extends Controller
     public function destroy($id)
     {
         $patrulla = Patrulla::find($id);
+        DB::table('users')->where('patrulla_id', $id)->update(['patrulla_id' => null]);
         $patrulla->delete();
 
-        return redirect()->route('patrulla.index')->with('success', 'Patrulla eliminada correctamente.');
+        return redirect()->route('patrulla.show')->with('success', 'Patrulla eliminada correctamente.');
     }
 }
