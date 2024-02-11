@@ -17,10 +17,6 @@
             <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
         </div>
         <div class="form-group">
-            <label for="fecha">Fecha:</label>
-            <input type="datetime-local" class="form-control" id="fecha" name="fecha" required>
-        </div>
-        <div class="form-group">
             <label for="a_la_fuga">¿A la fuga?</label>
             <select class="form-control" id="a_la_fuga" name="a_la_fuga" required>
                 <option value="1">Sí</option>
