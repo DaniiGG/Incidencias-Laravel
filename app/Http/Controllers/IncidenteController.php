@@ -25,37 +25,27 @@ class IncidenteController extends Controller
 
     // Método para almacenar un nuevo incidente
     public function store(Request $request)
-    {
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
-            'fecha' => [
-                'required',
-                'date',
-                function ($attribute, $value, $fail) {
-                    $fechaActual = Carbon::now();
-                    if (Carbon::parse($value)->greaterThan($fechaActual)) {
-                        $fail('La fecha no puede ser mayor a la fecha actual.');
-                    }
-                },
-            ],
-            'a_la_fuga' => 'required|boolean',
-            'ubicacion' => 'required|string|max:255',
-            
-        ]);
-        $userId = Auth::id();
+{
+    $request->validate([
+        'titulo' => 'required|string|max:255',
+        'descripcion' => 'required|string',
+        'a_la_fuga' => 'required|boolean',
+        'ubicacion' => 'required|string|max:255',
+    ]);
 
-        Incidente::create([
-            'titulo' => $request->titulo,
-            'descripcion' => $request->descripcion,
-            'fecha' => $request->fecha,
-            'a_la_fuga' => $request->a_la_fuga,
-            'ubicacion' => $request->ubicacion,
-            'user_id' => $userId, // Asignar el ID del usuario actual
-        ]);
+    $userId = Auth::id();
 
-        return redirect()->route('incidentes.index')->with('success', 'Incidente creado exitosamente.');
-    }
+    Incidente::create([
+        'titulo' => $request->titulo,
+        'descripcion' => $request->descripcion,
+        'fecha' => Carbon::now()->toDateTimeString(), // Establecer la fecha actual como la fecha del incidente
+        'a_la_fuga' => $request->a_la_fuga,
+        'ubicacion' => $request->ubicacion,
+        'user_id' => $userId, // Asignar el ID del usuario actual
+    ]);
+
+    return redirect()->route('incidentes.index')->with('success', 'Incidente creado exitosamente.');
+}
 
     // Método para mostrar un incidente específico
     public function show(Incidente $incidente)
@@ -80,7 +70,6 @@ class IncidenteController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            'fecha' => 'required|date',
             'a_la_fuga' => 'required|boolean',
             'ubicacion' => 'required|string|max:255',
             'user_id' => 'required|exists:users,id',

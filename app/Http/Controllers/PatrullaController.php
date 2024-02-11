@@ -68,30 +68,35 @@ class PatrullaController extends Controller
 
     public function update(Request $request, $id)
     {
-        
-        $request->validate([
-            'matricula' => [
-                'required',
-                'string',
-                'unique:patrulla,matricula',
-                'regex:/^\d{4}[a-zA-Z]{3}$/',
-            ],
-            'vehiculo' => 'required',
-        ]);
-        
         $patrulla = Patrulla::find($id);
-        
 
-            
+        // Verificamos si la matrícula que se está editando es la misma que la original
+        if ($request->matricula == $patrulla->matricula) {
+            $request->validate([
+                'matricula' => [
+                    'required',
+                    'string',
+                    'regex:/^\d{4}[a-zA-Z]{3}$/',
+                ],
+                'vehiculo' => 'required',
+            ]);
+        } else {
+            // Si la matrícula es diferente, entonces aplicamos la validación de unicidad
+            $request->validate([
+                'matricula' => [
+                    'required',
+                    'string',
+                    'unique:patrulla,matricula',
+                    'regex:/^\d{4}[a-zA-Z]{3}$/',
+                ],
+                'vehiculo' => 'required',
+            ]);
+        }
+
         $patrulla->update($request->all());
-            // Resto del código aquí...
-        
-    
-        
 
         return redirect()->route('patrulla.show')->with('success', 'Patrulla actualizada correctamente.');
     }
-
     public function destroy($id)
     {
         $patrulla = Patrulla::find($id);

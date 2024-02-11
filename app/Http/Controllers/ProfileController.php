@@ -17,14 +17,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        if (Gate::allows('create', User::class)) {
+        
 
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
-    } else {
-        abort(403, 'No tienes permiso para acceder a esta página.');
-    }
+   
     }
 
     /**
