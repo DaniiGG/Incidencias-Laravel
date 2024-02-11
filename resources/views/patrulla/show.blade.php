@@ -6,6 +6,11 @@
 @auth
 <div class="container">
     <h1>Detalles de la Patrulla</h1>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <table>
         <tr>
             <th>Identificador</th>

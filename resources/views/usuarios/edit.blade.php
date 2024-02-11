@@ -1,3 +1,8 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="{!! asset('css/incidentes/editar.css') !!}">
+    </head>
+
 @include('layouts.header')
 
 <div class="container">
@@ -38,3 +43,5 @@
 </div>
 
 @include('layouts.footer')
+
+</html>
