@@ -1,7 +1,16 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="{!! asset('css/policias/crear.css') !!}">
+    </head>
 @include('layouts.header')
 <div class="container">
     @auth
     <h1 class="heading">Lista de Agentes</h1>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <table class="table table-users">
         <thead>
             <tr>
@@ -40,3 +49,4 @@
 </div>
 @endauth
 @include('layouts.footer')
+</html>
